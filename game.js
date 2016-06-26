@@ -16,6 +16,8 @@ var myfriend;
 var fireBall=[];
 var fireFlower;
 var gaming= true;
+var minion_Walking ="minion_walking.png";
+var minion_fire=  "minion_fire.png";
 
 
 
@@ -27,7 +29,7 @@ function startGame() {
     myIslands=[];
     myMonsters=[];
     fireBall=[];
-    myGamePiece = new mainComponent(40, minionHeight, "minion_walking.png", 10, 120, "image");
+    myGamePiece = new mainComponent(40, minionHeight, minion_Walking, 10, 120, "image");
     myfriend = new component(20, minionHeight / 2, "friend.png", 10, 120, "image");
     for(var i=0; i < 10 ; i+=1){
         
@@ -503,7 +505,7 @@ function mainComponent(width, height, color, x, y, type) {
     this.newPos = function() {
         if(this.crashWith(fireFlower)){
             
-            this.image.src = "minion_fire.png";
+            this.image.src = minion_fire;
             if(this.firecap){
                 fiftypoints.x=fireFlower.x;
                 fiftypoints.y=fireFlower.y;
