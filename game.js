@@ -68,6 +68,8 @@ function startGame() {
     myGameArea.start();
 }
 
+$(document).ready(startGame);
+
 var myGameArea = {
     //Creat background for game
     canvas : document.createElement("canvas"),
