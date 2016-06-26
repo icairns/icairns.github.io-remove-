@@ -1,22 +1,172 @@
 body {
-    background-image: url('http://s3.amazonaws.com/codecademy-content/courses/ltp2/img/reader/bg.png');
+    background-image: url('http://phandroid.s3.amazonaws.com/wp-content/uploads/2014/10/mountains_hd.jpg');
+    background-attachment: fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    
 }
+.header{
+    font-size: 400%;
+    font-family:Garamond;
+    text-align:center;
+    background-color:white;
+    width:95%;
+    height:100px;
+    position:fixed;
+    margin-left:2.5%;
+    z-index:1;
+    margin-top:-110px;
+    border-bottom-right-radius:15px;
+    border-bottom-left-radius:15px;
+    border:2px solid black;
+    
+    
+    
+}
+#titleheader{
+    float:left;
+    
+    /*width:25%;*/
+    margin-left:40%
+    
+}
+
+#menu{
+    float:right;
+    margin-right:5%;
+    font-size:.5em;
+    margin-top:1%;
+    cursor:pointer;
+    border:1px solid black;
+    padding:1%;
+}
+#menulist{
+    
+    float:right;
+    clear:right;
+    background-color:white;
+    border:1px solid black;
+    margin-right:10%;
+    cursor:pointer;
+    
+    
+}
+#menuUL{
+    font-size:.4em;
+    padding-right:.4em;
+    
+}
+#filter{
+    position:fixed;
+    height:30em;
+    width:20%;
+    margin-left:-17%;
+    z-index:2;
+    
+}
+
+#tab{
+    background-color:white;
+    height:25%;
+    width:15%;
+    border-bottom-right-radius:10px;
+    border-top-right-radius:10px;
+    border:2px solid #A7DBD8;
+    cursor:pointer;
+    text-align:center;
+    
+    
+    
+    
+    float:right;
+}
+#filtertext{
+    
+    -moz-transform: rotate(90.0deg);  /* FF3.5+ */
+    -o-transform: rotate(90.0deg);  /* Opera 10.5 */
+    -webkit-transform: rotate(90.0deg);  /* Saf3.1+, Chrome */
+    filter:  progid:DXImageTransform.Microsoft.BasicImage(rotation=0.083);  /* IE6,IE7 */
+    -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=0.083)"; /* IE8 */
+    color:blue;
+    margin:.2em;
+    font-size:1.5em;
+}
+
+#filteroptions{
+    background-color:white;
+    height:100%;
+    width:85%;
+    border:2px solid #A7DBD8;
+    
+    float:left;
+
+}
+#articleheader{
+    border:2px solid black;
+    border-top-left-radius:5px;
+    border-top-right-radius:5px;
+    position:relative;
+    width:300px;
+    background: rgba(255,255,255,.9);
+    font-size:1.5em;
+}
+.slidecontent{
+    text-align:center;
+    width:100%;
+    
+}
+.active-slide{
+    
+}
+#slidefoot{
+    clear: both;
+    
+    
+}
+#next{
+    float:right;
+    cursor:pointer;
+    margin:3em;
+}
+#prev{
+    float:left;
+    cursor:pointer;
+    margin:3em;
+}
+
 
 p {
+    text-align:center;
     margin: 0;
 }
+img{
+    
+    
+}
+h2{
+    
+    text-align:center;
+}
+h1{
+    
+   
+}
 
+td{
+    
+}
 .row {
     margin: 0;
+    
 }
 
+
 .articles {
-    margin-top: 30px;
-    margin-bottom: 30px;
+    margin-top: 110px;
+    margin-bottom: 10px;
+ 
 }
 
 .article {
@@ -26,9 +176,12 @@ p {
     border-color: gray;
     font-family: arial,sans-serif;
     border-bottom: 1px #e5e5e5 solid;
+    border:1px solid black;
+    border-radius:5px;
+   
 }
 
-.current .item {
+.current {
     background: rgba(206,220,206,.9);
 }
 
@@ -56,12 +209,52 @@ p {
 }
 
 .description {
-    display: none;
+    display:none;
     padding-top: 10px;
     padding-bottom: 10px;
+    
+}
+.test{
+    display:inline-block;
+    width:20%;
+    margin:1em;
+    
+}
+.testimg{
+    width:90%;
+    margin-left:5%;
 }
 
 .description h1 {
     margin-top: 0px;
     font-size: 23px;
+}
+.hotproductsimg{
+    /*padding:2em;*/
+    height: 90%;
+    width:auto;
+    
+    
+}
+.hotproducts td{
+    height:300px;
+    width:50%;
+    text-align:center;
+}
+.skiingcontent{
+    text-align:center;
+    height:250px;
+    
+}
+#fileupload{
+    
+    
+    
+    
+}
+
+#uploadFile{
+    margin:auto;
+    color:white;
+   
 }
