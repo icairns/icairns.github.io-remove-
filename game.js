@@ -16,25 +16,39 @@ var myfriend;
 var fireBall=[];
 var fireFlower;
 var gaming= true;
-var minion_Walking ="minion_walking.png";
-var minion_fire=  "minion_fire.png";
+var minion_Walking;
+var minion_fire;
 var friend ="friend.png";
-var fireball1 = "fireball1.png";
-var fireball2 = "fireball2.png";
-var fireball3 = "fireball3.png";
-var bat_wingsDown = "bat_wingsDown.png";
-var bat_wingsUp = "bat_wingsUp.png";
-var background ="background.png";
-var ground= "ground.png";
-var chicken1= "chicken1.png";
-var chicken2= "chicken2.png";
-var fireflower = "fireflower.png";
+var fireball1;
+var fireball2;
+var fireball3;
+var bat_wingsDown;
+var bat_wingsUp;
+var background;
+var ground;
+var chicken1;
+var chicken2;
+var fireflower;
 
 
 
 
 
 function startGame() {
+    minion_Walking ="minion_walking.png";
+    minion_fire=  "minion_fire.png";
+    friend ="friend.png";
+    fireball1 = "fireball1.png";
+    fireball2 = "fireball2.png";
+    fireball3 = "fireball3.png";
+    bat_wingsDown = "bat_wingsDown.png";
+    bat_wingsUp = "bat_wingsUp.png";
+    background ="background.png";
+    ground= "ground.png";
+    chicken1= "chicken1.png";
+    chicken2= "chicken2.png";
+    fireflower = "fireflower.png";
+    
     //Game pieces
     gaming= true;
     myFloor=[];
