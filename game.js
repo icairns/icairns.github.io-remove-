@@ -15,7 +15,7 @@ var minionHeight= 60;
 var myfriend;
 var fireBall=[];
 var fireFlower;
-var gaming= true;
+var gaming= false;
 var minion_Walking=new Image();
 var minion_fire = new Image();
 var friend = new Image();
@@ -52,7 +52,7 @@ function startGame() {
     fireflower.src = "fireflower.png";
     
     //Game pieces
-    gaming= true;
+    //gaming= true;
     myFloor=[];
     myIslands=[];
     myMonsters=[];
@@ -147,16 +147,23 @@ var myGameArea = {
     
     //stops the game updating interval
     stop : function() {
-        gaming = false;
+        //gaming = true;
         clearInterval(this.interval);
         clearInterval(this.monsterInterval);
         this.endgame = setInterval(waitSpace, 20);
     }
 }
+
+var start= true;
 function waitSpace(){
     if (myGameArea.keys && myGameArea.keys[32]) {
         clearInterval(myGameArea.endgame);
+        gaming = true;
         startGame();
+    }
+    if(start){
+        start= false;
+        myBackground.update();
     }
     pressSpace.update();
 }
@@ -529,7 +536,8 @@ function mainComponent(width, height, color, x, y, type) {
             return crash;
         }
     }
-    
+    this.imortal = false;
+    this.imortaltracker = 0;
     this.newPos = function() {
         if(this.crashWith(fireFlower)){
             
@@ -547,28 +555,39 @@ function mainComponent(width, height, color, x, y, type) {
             }
             
         }
-        for (var i = 0; i < myMonsters.length; i += 1) {
-            if(this.bonk(myMonsters[i])){
-                this.gravitySpeed=0;
-                this.speedY = -5 ;
-                
-                myMonsters[i].height = myMonsters[i].height / 2;
-                fiftypoints.x=myMonsters[i].x;
-                fiftypoints.y=myMonsters[i].y;
-                score += 50;
-                
-                
-            }
-            else if(this.crashWith(myMonsters[i])) {
-                if(this.firecap){
-                    this.firecap = false;
-                    this.x += 100;
-                    this.image.src= "minion_walking.png";
-                }else{
-                    myGameArea.stop();
+        if(this.imortal ===false){
+            for (var i = 0; i < myMonsters.length; i += 1) {
+                if(this.bonk(myMonsters[i])){
+                    this.gravitySpeed=0;
+                    this.speedY = -5 ;
+                    
+                    myMonsters[i].height = myMonsters[i].height / 2;
+                    fiftypoints.x=myMonsters[i].x;
+                    fiftypoints.y=myMonsters[i].y;
+                    score += 50;
+                    
+                    
+                }
+                else if(this.crashWith(myMonsters[i])) {
+                    if(this.firecap){
+                        this.firecap = false;
+                        this.imortal = true;
+                        this.image.src= "minion_walking.png";
+                    }else{
+                        myGameArea.stop();
+                    }
                 }
             }
+        }else{
+            this.imortaltracker +=1;
+            if(this.imortaltracker > 100){
+                this.imortaltracker=0;
+                this.imortal=false;
+            }
+                
         }
+        
+        
         for (var i = 0; i < myFloor.length; i += 1) {
             this.checkFloor(myFloor[i]);
             
@@ -577,24 +596,26 @@ function mainComponent(width, height, color, x, y, type) {
             this.checkFloor(myIslands[i]);
             
         }
-        if(this.bonk(bat)){
-            this.gravitySpeed=0;
-            this.speedY = -5 ;
-            //bat = myMonsters[i].height / 2;
-            fiftypoints.x=bat.x;
-            fiftypoints.y=bat.y;
-            score += 50;
-            
-            bat.x= (WIDTH*3)/2;
-            bat.y= 300* Math.random();
-            
-        } else if(this.crashWith(bat)){
-            if(this.firecap){
-                this.firecap = false;
-                this.x += 100;
-                this.image.src= "minion_walking.png";
-            }else{
-                myGameArea.stop();
+        if(this.imortal===false){
+            if(this.bonk(bat)){
+                this.gravitySpeed=0;
+                this.speedY = -5 ;
+                //bat = myMonsters[i].height / 2;
+                fiftypoints.x=bat.x;
+                fiftypoints.y=bat.y;
+                score += 50;
+                
+                bat.x= (WIDTH*3)/2;
+                bat.y= 300* Math.random();
+                
+            } else if(this.crashWith(bat)){
+                if(this.firecap){
+                    this.firecap = false;
+                    this.imortal = true;
+                    this.image.src= "minion_walking.png";
+                }else{
+                    myGameArea.stop();
+                }
             }
         }
         
@@ -687,7 +708,12 @@ function updateGameArea() {
     myBackground.newPos();
     myBackground.update();
     myGamePiece.newPos();
-    myGamePiece.update();
+    if(myGamePiece.imortal === false){
+        myGamePiece.update();
+    }else if(!(myGamePiece.imortaltracker % 5 === 0)){
+        myGamePiece.update();
+    }
+    
     for(var i=0; i < fireBall.length ; i+=1){
         if (fireBall[i].x < WIDTH+20){
             fireBall[i].newPos();
@@ -811,6 +837,9 @@ function updateGameArea() {
     } else if(myGamePiece.x > WIDTH*2/5){
         myGamePiece.speedX += -1;
         myfriend.speedX +=-1;
+    }
+    if(gaming==false){
+        myGameArea.stop();
     }
     
     
