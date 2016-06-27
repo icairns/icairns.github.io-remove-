@@ -16,38 +16,40 @@ var myfriend;
 var fireBall=[];
 var fireFlower;
 var gaming= true;
-var minion_Walking;
-var minion_fire;
-var friend ="friend.png";
-var fireball1;
-var fireball2;
-var fireball3;
-var bat_wingsDown;
-var bat_wingsUp;
-var background;
-var ground;
-var chicken1;
-var chicken2;
-var fireflower;
+var minion_Walking=new Image();
+var minion_fire = new Image();
+var friend = new Image();
+var fireball1= new Image();
+var fireball2 = new Image();
+var fireball3= new Image();
+var bat_wingsDown= new Image();
+var bat_wingsUp= new Image();
+var background= new Image();
+var ground = new Image();
+var chicken1= new Image();
+var chicken2= new Image();
+var fireflower= new Image();
 
 
 
 
 
 function startGame() {
-    minion_Walking ="minion_walking.png";
-    minion_fire=  "minion_fire.png";
-    friend ="friend.png";
-    fireball1 = "fireball1.png";
-    fireball2 = "fireball2.png";
-    fireball3 = "fireball3.png";
-    bat_wingsDown = "bat_wingsDown.png";
-    bat_wingsUp = "bat_wingsUp.png";
-    background ="background.png";
-    ground= "ground.png";
-    chicken1= "chicken1.png";
-    chicken2= "chicken2.png";
-    fireflower = "fireflower.png";
+    
+    
+    minion_Walking.src= 'minion_walking.png';
+    minion_fire.src=  "minion_fire.png";
+    friend.src ='friend.png';
+    fireball1.src = "fireball1.png";
+    fireball2.src = "fireball2.png";
+    fireball3.src = "fireball3.png";
+    bat_wingsDown.src = "bat_wingsDown.png";
+    bat_wingsUp.src = "bat_wingsUp.png";
+    background.src ="background.png";
+    ground.src= "ground.png";
+    chicken1.src= "chicken1.png";
+    chicken2.src= "chicken2.png";
+    fireflower.src = "fireflower.png";
     
     //Game pieces
     gaming= true;
@@ -55,30 +57,30 @@ function startGame() {
     myIslands=[];
     myMonsters=[];
     fireBall=[];
-    myGamePiece = new mainComponent(40, minionHeight, minion_Walking, 10, 120, "image");
-    myfriend = new component(20, minionHeight / 2, friend, 10, 120, "image");
+    myGamePiece = new mainComponent(40, minionHeight, minion_Walking.src, 10, 120, "image");
+    myfriend = new component(20, minionHeight / 2, friend.src, 10, 120, "image");
     for(var i=0; i < 10 ; i+=1){
         
-        fireBall.push(new fireBallComponent(GRID, GRID, fireball1, WIDTH + 200, 0 ,"image"));
+        fireBall.push(new fireBallComponent(GRID, GRID, fireball1.src, WIDTH + 200, 0 ,"image"));
     }
     pressSpace = new component("40px", "Consolas", "black", 100, HEIGHT /2 , "text");
     pressSpace.text="Press Space Bar to Begin";
-    bat = new component(40, 60, bat_wingsDown, WIDTH*2, 300* Math.random() , "image");
-    myBackground = new component(WIDTH, HEIGHT, background, 0, 0, "image");
+    bat = new component(40, 60, bat_wingsDown.src, WIDTH*2, 300* Math.random() , "image");
+    myBackground = new component(WIDTH, HEIGHT, background.src, 0, 0, "image");
     myScore = new component("30px", "Consolas", "black", 280, 40, "text");
     
     fiftypoints = new component("20px", "Consolas", "yellow", 100, -90, "text");
     fiftypoints.speedY = -2;
-    myIslands.push(new component(50, GRID, ground, 100, 300 ,"image"));
+    myIslands.push(new component(50, GRID, ground.src, 100, 300 ,"image"));
     //make multiple islands in an array
     for(var j=1; j<20;j=j+1){
-        myIslands.push(new component(50,GRID, ground, Math.random()*WIDTH/2+ j * WIDTH/2, 250* Math.random() + 50 ,"image"));
+        myIslands.push(new component(50,GRID, ground.src, Math.random()*WIDTH/2+ j * WIDTH/2, 250* Math.random() + 50 ,"image"));
     }
     
-    fireFlower = new component(40, 40, fireflower, myIslands[1].x + myIslands[1].width / 2, myIslands[1].y - 40, "image");
+    fireFlower = new component(40, 40, fireflower.src, myIslands[1].x + myIslands[1].width / 2, myIslands[1].y - 40, "image");
     fireFlower.island=1;
     
-    myFloor.push(new component(GRID, GRID, ground, 0,HEIGHT-GRID ,"image"));
+    myFloor.push(new component(GRID, GRID, ground.src, 0,HEIGHT-GRID ,"image"));
     //make ground components
     var xpostion;
     for(var i=1;i<(WIDTH/GRID)+2;i=i+1){
@@ -86,10 +88,10 @@ function startGame() {
         if(Math.random()*10<1){
             xpostion += GRID * 3;
         }
-        myFloor.push(new component(GRID,GRID, ground, xpostion,HEIGHT-GRID ,"image"));
+        myFloor.push(new component(GRID,GRID, ground.src, xpostion,HEIGHT-GRID ,"image"));
     }
     
-    myMonsters.push(new monsterComponent(40, MONSTERHEIGHT, chicken1, WIDTH+50, 120, "image"));
+    myMonsters.push(new monsterComponent(40, MONSTERHEIGHT, chicken1.src, WIDTH+50, 120, "image"));
     
     
     
@@ -165,12 +167,12 @@ var fireballtracker = 0;
 var flaptracker= false;
 function flapWings(){
     if(flaptracker){
-        bat.image.src= bat_wingsUp;
+        bat.image.src= bat_wingsUp.src;
         flaptracker= false;
         bat.height=45;
     }
     else{
-        bat.image.src= bat_wingsDown;
+        bat.image.src= bat_wingsDown.src;
         flaptracker= true;
         bat.height = 60;
     }
@@ -182,26 +184,26 @@ var walktracker = false;
 function monsterswitch(){
     flapWings();
     if(walktracker){
-        myMonsters[0].image.src = chicken2;
+        myMonsters[0].image.src = chicken2.src;
         walktracker = false;
         
     }else{
-        myMonsters[0].image.src = chicken1;
+        myMonsters[0].image.src = chicken1.src;
         walktracker = true;
         if(fireballtracker === 0){
             for(var i=0; i < fireBall.length ; i+=1){
-                fireBall[i].image.src = fireball1
+                fireBall[i].image.src = fireball1.src
             }
             fireballtracker = 1;
         } else if(fireballtracker === 1){
             for(var i=0; i < fireBall.length ; i+=1){
-                fireBall[i].image.src = fireball2
+                fireBall[i].image.src = fireball2.src
             }
             fireballtracker = 2;
         }
         else {
             for(var i=0; i < fireBall.length ; i+=1){
-                fireBall[i].image.src = fireball3
+                fireBall[i].image.src = fireball3.src
             }
             fireballtracker = 0;
         }
@@ -531,7 +533,7 @@ function mainComponent(width, height, color, x, y, type) {
     this.newPos = function() {
         if(this.crashWith(fireFlower)){
             
-            this.image.src = minion_fire;
+            this.image.src = minion_fire.src;
             if(this.firecap){
                 fiftypoints.x=fireFlower.x;
                 fiftypoints.y=fireFlower.y;
