@@ -160,9 +160,10 @@ function waitSpace(){
         clearInterval(myGameArea.endgame);
         gaming = true;
         startGame();
+        start= false;
     }
     if(start){
-        start= false;
+        
         myBackground.update();
     }
     pressSpace.update();
