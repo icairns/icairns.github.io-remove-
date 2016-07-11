@@ -50,6 +50,7 @@ function startGame() {
     chicken1.src= "chicken1.png";
     chicken2.src= "chicken2.png";
     fireflower.src = "fireflower.png";
+    score=0;
     
     //Game pieces
     //gaming= true;
@@ -148,6 +149,7 @@ var myGameArea = {
     //stops the game updating interval
     stop : function() {
         //gaming = true;
+        
         clearInterval(this.interval);
         clearInterval(this.monsterInterval);
         this.endgame = setInterval(waitSpace, 20);
